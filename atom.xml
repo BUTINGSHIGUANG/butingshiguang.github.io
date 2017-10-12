@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>TeslaChan&#39;s Blog</title>
+  
+  <subtitle>buting</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://butingshiguang.github.io/"/>
+  <updated>2017-10-12T14:29:19.885Z</updated>
+  <id>https://butingshiguang.github.io/</id>
+  
+  <author>
+    <name>buting</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>今天星期四，稍微弄了一下</title>
+    <link href="https://butingshiguang.github.io/2017/10/12/20171012/"/>
+    <id>https://butingshiguang.github.io/2017/10/12/20171012/</id>
+    <published>2017-10-12T00:40:01.000Z</published>
+    <updated>2017-10-12T14:29:19.885Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="测试测试"><a href="#测试测试" class="headerlink" title="测试测试"></a>测试测试</h1><h2 id="时光不停"><a href="#时光不停" class="headerlink" title="时光不停"></a>时光不停</h2><h3 id="时光不停-1"><a href="#时光不停-1" class="headerlink" title="时光不停"></a>时光不停</h3><blockquote><p>不停</p></blockquote><p><a href="https://weibo.com/p/1005055918998349/home" target="_blank" rel="external">新浪微博</a></p><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1507782690489&amp;di=c9464115f6db2f61c0b8d9bb532edf4b&amp;imgtype=0&amp;src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F622762d0f703918f5cb03abf513d269759eec466.jpg" alt="pic0"></p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=509902724&auto=1&height=66"><br></iframe><a id="more"></a><embed height="500" width="700" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=14909587&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"><br><div><br><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><br><span id="busuanzi_container_page_pv"><br>  -&gt;本文浏览量 <span id="busuanzi_value_page_pv"></span><br></span><br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;测试测试&quot;&gt;&lt;a href=&quot;#测试测试&quot; class=&quot;headerlink&quot; title=&quot;测试测试&quot;&gt;&lt;/a&gt;测试测试&lt;/h1&gt;&lt;h2 id=&quot;时光不停&quot;&gt;&lt;a href=&quot;#时光不停&quot; class=&quot;headerlink&quot; title=&quot;时光不停&quot;&gt;&lt;/a&gt;时光不停&lt;/h2&gt;&lt;h3 id=&quot;时光不停-1&quot;&gt;&lt;a href=&quot;#时光不停-1&quot; class=&quot;headerlink&quot; title=&quot;时光不停&quot;&gt;&lt;/a&gt;时光不停&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;不停&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://weibo.com/p/1005055918998349/home&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;新浪微博&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://timgsa.baidu.com/timg?image&amp;amp;quality=80&amp;amp;size=b9999_10000&amp;amp;sec=1507782690489&amp;amp;di=c9464115f6db2f61c0b8d9bb532edf4b&amp;amp;imgtype=0&amp;amp;src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F622762d0f703918f5cb03abf513d269759eec466.jpg&quot; alt=&quot;pic0&quot;&gt;&lt;/p&gt;
+&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=509902724&amp;auto=1&amp;height=66&quot;&gt;&lt;br&gt;&lt;/iframe&gt;
+    
+    </summary>
+    
+      <category term="测试" scheme="https://butingshiguang.github.io/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="测试" scheme="https://butingshiguang.github.io/tags/%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>欢迎来到不停的博客，我还有一个名字叫Tesla Chan</title>
+    <link href="https://butingshiguang.github.io/2017/10/11/hello-world/"/>
+    <id>https://butingshiguang.github.io/2017/10/11/hello-world/</id>
+    <published>2017-10-11T04:17:27.000Z</published>
+    <updated>2017-10-12T14:35:15.410Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://butingshiguang.github.io/">KM</a>!<br>这是我的第二个博客，使用GithubPages搭建，我是 TeslaChan @buting，一个热爱技术，爱好科学的骚年~~~</p><h2 id="以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt"><a href="#以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt" class="headerlink" title="以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;"></a>以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;</h2><h3 id="我的新浪微博-曦未晞-，欢迎关注-，这才是重点"><a href="#我的新浪微博-曦未晞-，欢迎关注-，这才是重点" class="headerlink" title="我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点"></a>我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点</h3><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p><div><br><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"><br></script><br><span id="busuanzi_container_page_pv"><br>  -&gt;本文浏览量 <span id="busuanzi_value_page_pv"></span><br></span><br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://butingshiguang.github.io/&quot;&gt;KM&lt;/a&gt;!&lt;br&gt;这是我的第二个博客，使用GithubPages搭建，我是 TeslaChan @buting，一个热爱技术，爱好科学的骚年~~~&lt;/p&gt;
+&lt;h2 id=&quot;以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt&quot;&gt;&lt;a href=&quot;#以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt&quot; class=&quot;headerlink&quot; title=&quot;以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&amp;gt;_&amp;lt;&quot;&gt;&lt;/a&gt;以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&amp;gt;_&amp;lt;&lt;/h2&gt;&lt;h3 id=&quot;我的新浪微博-曦未晞-，欢迎关注-，这才是重点&quot;&gt;&lt;a href=&quot;#我的新浪微博-曦未晞-，欢迎关注-，这才是重点&quot; class=&quot;headerlink&quot; title=&quot;我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点&quot;&gt;&lt;/a&gt;我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="欢迎" scheme="https://butingshiguang.github.io/categories/%E6%AC%A2%E8%BF%8E/"/>
+    
+    
+      <category term="欢迎" scheme="https://butingshiguang.github.io/tags/%E6%AC%A2%E8%BF%8E/"/>
+    
+  </entry>
+  
+</feed>
