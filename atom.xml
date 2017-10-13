@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://butingshiguang.github.io/"/>
-  <updated>2017-10-12T14:29:19.885Z</updated>
+  <updated>2017-10-13T07:57:57.555Z</updated>
   <id>https://butingshiguang.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>谈谈我对“墙”的看法</title>
+    <link href="https://butingshiguang.github.io/2017/10/13/20171013/"/>
+    <id>https://butingshiguang.github.io/2017/10/13/20171013/</id>
+    <published>2017-10-13T07:03:48.000Z</published>
+    <updated>2017-10-13T07:57:57.555Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507889844349&di=ffa8435b81ec67e60b35569c8e920bee&imgtype=0&src=http%3A%2F%2Fwww.gamemei.com%2Fbackground%2Fuploads%2Fallimg%2F20161125%2F1480042915299447.jpg" width="70%" height="50%"></p><p>首先，这里的<strong>墙</strong>指的是中国的防火长城<strong>GFW</strong>，有很多被屏蔽的国外网站如<a href="https://www.google.com/ncr" target="_blank" rel="external">Google</a>,<a href="https://www.youtube.com" target="_blank" rel="external">Youtube</a>,etc.很多人对墙的看法不一，大多数都持有批评的态度。</p><a id="more"></a><p>对于普通用户来说：我认为墙的存在是有好处的，这个社会有太多对中国(包括政府)的批评和抹黑，特别是在国外，Youtube上面骂中国的一大堆。如果完全开发对国外网站的访问，势必存在一些没有自己独立思考的人会跟风起哄，而且国外对中国公民散布谣言，乱我军心也是必然存在的。</p><p>对于IT/计算机等从业者或某些爱好者来说，访问<a href="https://www.google.com/ncr" title="Google" target="_blank" rel="external">Google</a>等网站是必须的，所以有时候难免会<strong>翻墙</strong>，GFW造成了很大的不便。</p><p>总的说来，GFW的存在有着一定的必要性，利大于弊。</p><div><br><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"><br></script><br><span id="busuanzi_container_page_pv"><br>  &amp;gt_&amp;lt本文浏览量 <span id="busuanzi_value_page_pv"></span><br></span><br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1507889844349&amp;di=ffa8435b81ec67e60b35569c8e920bee&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.gamemei.com%2Fbackground%2Fuploads%2Fallimg%2F20161125%2F1480042915299447.jpg&quot; width=&quot;70%&quot; height=&quot;50%&quot;&gt;&lt;/p&gt;
+&lt;p&gt;首先，这里的&lt;strong&gt;墙&lt;/strong&gt;指的是中国的防火长城&lt;strong&gt;GFW&lt;/strong&gt;，有很多被屏蔽的国外网站如&lt;a href=&quot;https://www.google.com/ncr&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google&lt;/a&gt;,&lt;a href=&quot;https://www.youtube.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Youtube&lt;/a&gt;,etc.很多人对墙的看法不一，大多数都持有批评的态度。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="科技" scheme="https://butingshiguang.github.io/categories/%E7%A7%91%E6%8A%80/"/>
+    
+    
+      <category term="科技" scheme="https://butingshiguang.github.io/tags/%E7%A7%91%E6%8A%80/"/>
+    
+  </entry>
   
   <entry>
     <title>今天星期四，稍微弄了一下</title>
