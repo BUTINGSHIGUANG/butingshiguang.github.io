@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java8学习笔记]]></title>
+    <url>%2F2017%2F10%2F19%2F20171019%2F</url>
+    <content type="text"><![CDATA[java8java annotation (注解) @Override 覆写 @Deprecated 过期 @SuppressWarnings({ “rawtypes”, “unchecked” }) 压制警告 Java 泛型通配符 Message&lt;?&gt;: 泛型类型通配 Message&lt;? extends 类&gt;: 设置泛型上限，子类 Message&lt;? super 类&gt;: 设置泛型下限，父类泛型接口1234567891011121314interface IMessage&lt;T&gt; &#123; //设置泛型接口 public void print(T t);&#125;class MessageImpl&lt;T&gt; implements IMessage&lt;T&gt; &#123; public void print(T t) &#123; System.out.println(t); &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; IMessage&lt;String&gt; msg = new MessageImpl&lt;String&gt;(); msg.print("Hello World!"); &#125;&#125; 泛型方法123public static &lt;T&gt; T fun(T t) &#123; //T的类型由传入类型决定 return t;&#125; 枚举12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364enum Color &#123; //相当于一个类继承了Enum类(抽象类)而已 RED,GREEN,BLUE;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Color red = Color.RED; System.out.println(red); for (Color c : Color.values()) &#123; //values() System.out.println(c.ordinal() + " - "); &#125; &#125;&#125;//扩充枚举功能enum Color &#123; //相当于一个类继承了Enum类(抽象类)而已 RED("红色"),GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Color red = Color.RED; System.out.println(red); for (Color c : Color.values()) &#123; //values() System.out.println(c); //调用toString() &#125; &#125;&#125;//枚举实现接口enum Color implements Message &#123; RED("红色"),GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125; public String getTitle() &#123; return title; &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Message msg = Color.RED; System.out.println(msg.getTitle()); &#125;&#125;//枚举最变态的做法enum Color implements Message &#123; RED("红色")&#123; public String getTitle() &#123; return "自己的" + this.title; &#125; &#125;,GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125; public String getTitle() &#123; return title; &#125;&#125; 泛型中定义普通方法使用default在接口中定义普通方法 使用static在接口中定义普通方法12345678910111213141516171819202122interface IMessage &#123; public void print(); default void fun() &#123; //此处定义了一个普通方法 System.out.println("毁三观的方法"); &#125; static void get() &#123; System.out.println("直接由接口调用!"); &#125;&#125;class MessageImpl implements IMessage &#123; @Override public void print() &#123; System.out.println("Hello World!"); &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; IMessage msg = new MessageImpl(); msg.fun(); //接口中直接定义的 &#125; IMessage.get();&#125; lambda表达式匿名内部类123456789101112public class TestDemo &#123; public static void main(String[] args)&#123; fun(new IMessage() &#123; public void print() &#123; System.out.println("Hello World!!!"); &#125; &#125;); &#125;&#125;// lambdafun( () -&gt; System.out.println("Hello World!!!") ); lambda (参数表)-&gt; 单行语句; (参数表)-&gt; {单行语句}; (参数表)-&gt; 表达式;123456789101112interface IMessage &#123; public void print(String str);&#125;public class TestDemo &#123; public static void main(String[] args)&#123; fun((s) -&gt; System.out.println(s)); &#125; public static void fun(IMessage msg) &#123; msg.print("Hello World!"); &#125;&#125; 4种方法引用 引用静态方法: 类名称::static 方法名称; 引用某个对象的方法: 实例化对象::普通方法; 引用特定类型的方法: 特定类::普通方法; 引用构造方法: 类名称::new; 123456789101112@FunctionalInterface //此注解指定该接口内部只存在一个方法,即函数式接口(可以引用函数)interface IMessage&lt;P,R&gt; &#123; public R zhuanhuan(P p);&#125;public class TestDemo &#123; public static void main(String[] args)&#123; //引用类的普通方法 IMessage&lt;Integer,String&gt; msg = String::valueOf; String str = msg.zhuanhuan(1000); System.out.println(str.replaceAll("0", "9")); &#125;&#125;]]></content>
+      <categories>
+        <category>编程</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[谈谈我对“墙”的看法]]></title>
     <url>%2F2017%2F10%2F13%2F20171013%2F</url>
-    <content type="text"><![CDATA[首先，这里的墙指的是中国的防火长城GFW，有很多被屏蔽的国外网站如Google,Youtube,etc.很多人对墙的看法不一，大多数都持有批评的态度。 对于普通用户来说：我认为墙的存在是有好处的，这个社会有太多对中国(包括政府)的批评和抹黑，特别是在国外，Youtube上面骂中国的一大堆。如果完全开发对国外网站的访问，势必存在一些没有自己独立思考的人会跟风起哄，而且国外对中国公民散布谣言，乱我军心也是必然存在的。 对于IT/计算机等从业者或某些爱好者来说，访问Google等网站是必须的，所以有时候难免会翻墙，GFW造成了很大的不便。 总的说来，GFW的存在有着一定的必要性，利大于弊。 &amp;gt_&amp;lt本文浏览量]]></content>
+    <content type="text"><![CDATA[首先，这里的墙指的是中国的防火长城GFW，有很多被屏蔽的国外网站如Google,Youtube,etc.很多人对墙的看法不一，大多数都持有批评的态度。 对于普通用户来说：我认为墙的存在是有好处的，这个社会有太多对中国(包括政府)的批评和抹黑，特别是在国外，Youtube上面骂中国的一大堆。如果完全开发对国外网站的访问，势必存在一些没有自己独立思考的人会跟风起哄，而且国外对中国公民散布谣言，乱我军心也是必然存在的。 对于IT/计算机等从业者或某些爱好者来说，访问Google等网站是必须的，所以有时候难免会翻墙，GFW造成了很大的不便。 总的说来，GFW的存在有着一定的必要性，利大于弊。]]></content>
       <categories>
         <category>科技</category>
       </categories>
@@ -14,7 +27,7 @@
   <entry>
     <title><![CDATA[今天星期四，稍微弄了一下]]></title>
     <url>%2F2017%2F10%2F12%2F20171012%2F</url>
-    <content type="text"><![CDATA[测试测试时光不停时光不停 不停 新浪微博 -&gt;本文浏览量]]></content>
+    <content type="text"><![CDATA[测试测试时光不停时光不停 不停 新浪微博]]></content>
       <categories>
         <category>测试</category>
       </categories>
