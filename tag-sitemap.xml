@@ -16,20 +16,6 @@
     </url>
 
     <url>
-        <loc>https://butingshiguang.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
-        <lastmod>2017-10-21T15:49:19.295Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://butingshiguang.github.io/tags/java/</loc>
-        <lastmod>2017-10-21T15:49:19.295Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://butingshiguang.github.io/tags/%E6%AC%A2%E8%BF%8E/</loc>
         <lastmod>2017-10-21T16:10:31.515Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -38,7 +24,21 @@
 
     <url>
         <loc>https://butingshiguang.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
-        <lastmod>2017-10-24T04:18:19.836Z</lastmod>
+        <lastmod>2017-10-24T04:20:52.307Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://butingshiguang.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
+        <lastmod>2017-10-24T04:35:37.112Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://butingshiguang.github.io/tags/java/</loc>
+        <lastmod>2017-10-24T04:35:37.112Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

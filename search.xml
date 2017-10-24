@@ -1,169 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-    
-    <entry>
-      <title><![CDATA[1024程序员节快乐!!!]]></title>
-      <url>/2017/10/24/20171024/</url>
-      <content type="html"><![CDATA[<h1 id="祝地球上的程序员们节日愉快，代码无bug！"><a href="#祝地球上的程序员们节日愉快，代码无bug！" class="headerlink" title="祝地球上的程序员们节日愉快，代码无bug！"></a>祝地球上的程序员们节日愉快，代码无bug！</h1><a id="more"></a>
-<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=461107563&auto=1&height=66"><br></iframe><br><strong>有人问一个程序员借1000块钱，程序员说借你1024块凑个整吧~那人一脸懵逼</strong></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 随笔 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 随笔 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[java8学习笔记]]></title>
-      <url>/2017/10/19/20171019/</url>
-      <content type="html"><![CDATA[<h1 id="java8"><a href="#java8" class="headerlink" title="java8"></a><strong>java8</strong></h1><h1 id="java-annotation-注解"><a href="#java-annotation-注解" class="headerlink" title="java annotation (注解)"></a>java annotation (注解)</h1><ul>
-<li>@Override 覆写</li>
-<li>@Deprecated 过期</li>
-<li>@SuppressWarnings({ “rawtypes”, “unchecked” }) 压制警告<a id="more"></a>
-</li>
-</ul>
-<h1 id="Java-泛型"><a href="#Java-泛型" class="headerlink" title="Java 泛型"></a>Java 泛型</h1><h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><ul>
-<li>Message&lt;?&gt;: 泛型类型通配</li>
-<li>Message&lt;? extends 类&gt;: 设置泛型上限，子类</li>
-<li>Message&lt;? super 类&gt;: 设置泛型下限，父类</li>
-</ul>
-<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span>&lt;<span class="title">T</span>&gt; </span>&#123;     <span class="comment">//设置泛型接口</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T t)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MessageImpl</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IMessage</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T t)</span> </span>&#123;</div><div class="line">        System.out.println(t);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        IMessage&lt;String&gt; msg = <span class="keyword">new</span> MessageImpl&lt;String&gt;();</div><div class="line">        msg.print(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">fun</span><span class="params">(T t)</span> </span>&#123;   <span class="comment">//T的类型由传入类型决定</span></div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> Color &#123;            <span class="comment">//相当于一个类继承了Enum类(抽象类)而已</span></div><div class="line">    RED,GREEN,BLUE;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Color red = Color.RED;</div><div class="line">        System.out.println(red);</div><div class="line">        <span class="keyword">for</span> (Color c : Color.values()) &#123;   <span class="comment">//values()</span></div><div class="line">            System.out.println(c.ordinal() + <span class="string">" - "</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//扩充枚举功能</span></div><div class="line"><span class="keyword">enum</span> Color &#123;            <span class="comment">//相当于一个类继承了Enum类(抽象类)而已</span></div><div class="line">    RED(<span class="string">"红色"</span>),GREEN(<span class="string">"绿色"</span>),BLUE(<span class="string">"蓝色"</span>);</div><div class="line">    <span class="keyword">private</span> String title;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.title = title;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Color red = Color.RED;</div><div class="line">        System.out.println(red);</div><div class="line">        <span class="keyword">for</span> (Color c : Color.values()) &#123;   <span class="comment">//values()</span></div><div class="line">            System.out.println(c);  <span class="comment">//调用toString()</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//枚举实现接口</span></div><div class="line"><span class="keyword">enum</span> Color implements Message &#123;</div><div class="line">    RED(<span class="string">"红色"</span>),GREEN(<span class="string">"绿色"</span>),BLUE(<span class="string">"蓝色"</span>);</div><div class="line">        <span class="keyword">private</span> String title;</div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.title = title;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> title;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Message msg = Color.RED;</div><div class="line">        System.out.println(msg.getTitle());</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//枚举最变态的做法</span></div><div class="line"><span class="keyword">enum</span> Color implements Message &#123;</div><div class="line">    RED(<span class="string">"红色"</span>)&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"自己的"</span> + <span class="keyword">this</span>.title;</div><div class="line">        &#125;</div><div class="line">    &#125;,GREEN(<span class="string">"绿色"</span>),BLUE(<span class="string">"蓝色"</span>);</div><div class="line">        <span class="keyword">private</span> String title;</div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.title = title;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> title;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="泛型中定义普通方法"><a href="#泛型中定义普通方法" class="headerlink" title="泛型中定义普通方法"></a>泛型中定义普通方法</h2><h3 id="使用default在接口中定义普通方法-使用static在接口中定义普通方法"><a href="#使用default在接口中定义普通方法-使用static在接口中定义普通方法" class="headerlink" title="使用default在接口中定义普通方法 使用static在接口中定义普通方法"></a>使用default在接口中定义普通方法 使用static在接口中定义普通方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123;  <span class="comment">//此处定义了一个普通方法</span></div><div class="line">        System.out.println(<span class="string">"毁三观的方法"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"直接由接口调用!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MessageImpl</span> <span class="keyword">implements</span> <span class="title">IMessage</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      IMessage msg = <span class="keyword">new</span> MessageImpl();</div><div class="line">      msg.fun(); <span class="comment">//接口中直接定义的</span></div><div class="line">    &#125;</div><div class="line">    IMessage.get();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      fun(<span class="keyword">new</span> IMessage() &#123;</div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">              System.out.println(<span class="string">"Hello World!!!"</span>);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// lambda</span></div><div class="line">fun( () -&gt; System.out.println(<span class="string">"Hello World!!!"</span>) );</div></pre></td></tr></table></figure>
-<h2 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h2><ul>
-<li>(参数表)-&gt; 单行语句;</li>
-<li>(参数表)-&gt; {单行语句};</li>
-<li>(参数表)-&gt; 表达式;</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      fun((s) -&gt; System.out.println(s));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">(IMessage msg)</span> </span>&#123;</div><div class="line">        msg.print(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="4种方法引用"><a href="#4种方法引用" class="headerlink" title="4种方法引用"></a>4种方法引用</h1><ul>
-<li>引用静态方法: 类名称::static 方法名称;</li>
-<li>引用某个对象的方法: 实例化对象::普通方法;</li>
-<li>引用特定类型的方法: 特定类::普通方法;</li>
-<li>引用构造方法: 类名称::new;</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span>   <span class="comment">//此注解指定该接口内部只存在一个方法,即函数式接口(可以引用函数)</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span>&lt;<span class="title">P</span>,<span class="title">R</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">zhuanhuan</span><span class="params">(P p)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      <span class="comment">//引用类的普通方法</span></div><div class="line">      IMessage&lt;Integer,String&gt; msg = String::valueOf;</div><div class="line">      String str = msg.zhuanhuan(<span class="number">1000</span>);</div><div class="line">      System.out.println(str.replaceAll(<span class="string">"0"</span>, <span class="string">"9"</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-      
-        <categories>
-            
-            <category> 编程 </category>
-            
-            <category> java </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 编程 </tag>
-            
-            <tag> java </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[谈谈我对“墙”的看法]]></title>
-      <url>/2017/10/13/20171013/</url>
-      <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507889844349&di=ffa8435b81ec67e60b35569c8e920bee&imgtype=0&src=http%3A%2F%2Fwww.gamemei.com%2Fbackground%2Fuploads%2Fallimg%2F20161125%2F1480042915299447.jpg" width="70%" height="50%"></p>
-<p>首先，这里的<strong>墙</strong>指的是中国的防火长城<strong>GFW</strong>，有很多被屏蔽的国外网站如<a href="https://www.google.com/ncr" target="_blank" rel="external">Google</a>,<a href="https://www.youtube.com" target="_blank" rel="external">Youtube</a>,etc.很多人对墙的看法不一，大多数都持有批评的态度。</p>
-<a id="more"></a>
-<p>对于普通用户来说：我认为墙的存在是有好处的，这个社会有太多对中国(包括政府)的批评和抹黑，特别是在国外，Youtube上面骂中国的一大堆。如果完全开发对国外网站的访问，势必存在一些没有自己独立思考的人会跟风起哄，而且国外对中国公民散布谣言，乱我军心也是必然存在的。</p>
-<p>对于IT/计算机等从业者或某些爱好者来说，访问<a href="https://www.google.com/ncr" title="Google" target="_blank" rel="external">Google</a>等网站是必须的，所以有时候难免会<strong>翻墙</strong>，GFW造成了很大的不便。</p>
-<p>总的说来，GFW的存在有着一定的必要性，利大于弊。</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 科技 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 科技 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[今天星期四，稍微弄了一下]]></title>
-      <url>/2017/10/12/20171012/</url>
-      <content type="html"><![CDATA[<h1 id="测试测试"><a href="#测试测试" class="headerlink" title="测试测试"></a>测试测试</h1><h2 id="时光不停"><a href="#时光不停" class="headerlink" title="时光不停"></a>时光不停</h2><h3 id="时光不停-1"><a href="#时光不停-1" class="headerlink" title="时光不停"></a>时光不停</h3><blockquote>
-<p>不停</p>
-</blockquote>
-<p><a href="https://weibo.com/p/1005055918998349/home" target="_blank" rel="external">新浪微博</a></p>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1507782690489&amp;di=c9464115f6db2f61c0b8d9bb532edf4b&amp;imgtype=0&amp;src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F622762d0f703918f5cb03abf513d269759eec466.jpg" alt="pic0"></p>
-<a id="more"></a>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=509902724&auto=1&height=66"><br></iframe>
-
-
-
-<embed height="500" width="700" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=14909587&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"><br>
-]]></content>
-      
-        <categories>
-            
-            <category> 测试 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[欢迎来到不停的博客，我还有一个名字叫Tesla Chan]]></title>
-      <url>/2017/10/11/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://butingshiguang.github.io/">KM</a>!<br>这是我的第二个博客，使用GithubPages搭建，我是 TeslaChan @buting，一个热爱技术，爱好科学的骚年~~~</p>
-<h2 id="以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt"><a href="#以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt" class="headerlink" title="以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;"></a>以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;</h2><h3 id="我的新浪微博-曦未晞-，欢迎关注-，这才是重点"><a href="#我的新浪微博-曦未晞-，欢迎关注-，这才是重点" class="headerlink" title="我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点"></a>我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点</h3><a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-      
-        <categories>
-            
-            <category> 欢迎 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 欢迎 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-  
-  
+<search>
+  <entry>
+    <title><![CDATA[1024程序员节快乐!!!]]></title>
+    <url>%2F2017%2F10%2F24%2F20171024%2F</url>
+    <content type="text"><![CDATA[祝地球上的程序员们节日愉快，代码无bug！ 有人问一个程序员借1000块钱，程序员说借你1024块凑个整吧~那人一脸懵逼]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java8学习笔记]]></title>
+    <url>%2F2017%2F10%2F19%2F20171019%2F</url>
+    <content type="text"><![CDATA[java8java annotation (注解) @Override 覆写 @Deprecated 过期 @SuppressWarnings({ “rawtypes”, “unchecked” }) 压制警告 Java 泛型通配符 Message&lt;?&gt;: 泛型类型通配 Message&lt;? extends 类&gt;: 设置泛型上限，子类 Message&lt;? super 类&gt;: 设置泛型下限，父类 泛型接口1234567891011121314interface IMessage&lt;T&gt; &#123; //设置泛型接口 public void print(T t);&#125;class MessageImpl&lt;T&gt; implements IMessage&lt;T&gt; &#123; public void print(T t) &#123; System.out.println(t); &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; IMessage&lt;String&gt; msg = new MessageImpl&lt;String&gt;(); msg.print("Hello World!"); &#125;&#125; 泛型方法123public static &lt;T&gt; T fun(T t) &#123; //T的类型由传入类型决定 return t;&#125; 枚举12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364enum Color &#123; //相当于一个类继承了Enum类(抽象类)而已 RED,GREEN,BLUE;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Color red = Color.RED; System.out.println(red); for (Color c : Color.values()) &#123; //values() System.out.println(c.ordinal() + " - "); &#125; &#125;&#125;//扩充枚举功能enum Color &#123; //相当于一个类继承了Enum类(抽象类)而已 RED("红色"),GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Color red = Color.RED; System.out.println(red); for (Color c : Color.values()) &#123; //values() System.out.println(c); //调用toString() &#125; &#125;&#125;//枚举实现接口enum Color implements Message &#123; RED("红色"),GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125; public String getTitle() &#123; return title; &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Message msg = Color.RED; System.out.println(msg.getTitle()); &#125;&#125;//枚举最变态的做法enum Color implements Message &#123; RED("红色")&#123; public String getTitle() &#123; return "自己的" + this.title; &#125; &#125;,GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125; public String getTitle() &#123; return title; &#125;&#125; 泛型中定义普通方法使用default在接口中定义普通方法 使用static在接口中定义普通方法12345678910111213141516171819202122interface IMessage &#123; public void print(); default void fun() &#123; //此处定义了一个普通方法 System.out.println("毁三观的方法"); &#125; static void get() &#123; System.out.println("直接由接口调用!"); &#125;&#125;class MessageImpl implements IMessage &#123; @Override public void print() &#123; System.out.println("Hello World!"); &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; IMessage msg = new MessageImpl(); msg.fun(); //接口中直接定义的 &#125; IMessage.get();&#125; lambda表达式匿名内部类123456789101112public class TestDemo &#123; public static void main(String[] args)&#123; fun(new IMessage() &#123; public void print() &#123; System.out.println("Hello World!!!"); &#125; &#125;); &#125;&#125;// lambdafun( () -&gt; System.out.println("Hello World!!!") ); lambda (参数表)-&gt; 单行语句; (参数表)-&gt; {单行语句}; (参数表)-&gt; 表达式; 123456789101112interface IMessage &#123; public void print(String str);&#125;public class TestDemo &#123; public static void main(String[] args)&#123; fun((s) -&gt; System.out.println(s)); &#125; public static void fun(IMessage msg) &#123; msg.print("Hello World!"); &#125;&#125; 4种方法引用 引用静态方法: 类名称::static 方法名称; 引用某个对象的方法: 实例化对象::普通方法; 引用特定类型的方法: 特定类::普通方法; 引用构造方法: 类名称::new; 123456789101112@FunctionalInterface //此注解指定该接口内部只存在一个方法,即函数式接口(可以引用函数)interface IMessage&lt;P,R&gt; &#123; public R zhuanhuan(P p);&#125;public class TestDemo &#123; public static void main(String[] args)&#123; //引用类的普通方法 IMessage&lt;Integer,String&gt; msg = String::valueOf; String str = msg.zhuanhuan(1000); System.out.println(str.replaceAll("0", "9")); &#125;&#125;]]></content>
+      <categories>
+        <category>编程</category>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[谈谈我对“墙”的看法]]></title>
+    <url>%2F2017%2F10%2F13%2F20171013%2F</url>
+    <content type="text"><![CDATA[首先，这里的墙指的是中国的防火长城GFW，有很多被屏蔽的国外网站如Google,Youtube,etc.很多人对墙的看法不一，大多数都持有批评的态度。 对于普通用户来说：我认为墙的存在是有好处的，这个社会有太多对中国(包括政府)的批评和抹黑，特别是在国外，Youtube上面骂中国的一大堆。如果完全开发对国外网站的访问，势必存在一些没有自己独立思考的人会跟风起哄，而且国外对中国公民散布谣言，乱我军心也是必然存在的。 对于IT/计算机等从业者或某些爱好者来说，访问Google等网站是必须的，所以有时候难免会翻墙，GFW造成了很大的不便。 总的说来，GFW的存在有着一定的必要性，利大于弊。]]></content>
+      <categories>
+        <category>科技</category>
+      </categories>
+      <tags>
+        <tag>科技</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[今天星期四，稍微弄了一下]]></title>
+    <url>%2F2017%2F10%2F12%2F20171012%2F</url>
+    <content type="text"><![CDATA[测试测试时光不停时光不停 不停 新浪微博]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>测试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[欢迎来到不停的博客，我还有一个名字叫Tesla Chan]]></title>
+    <url>%2F2017%2F10%2F11%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to KM!这是我的第二个博客，使用GithubPages搭建，我是 TeslaChan @buting，一个热爱技术，爱好科学的骚年~~~ 以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点 Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+      <categories>
+        <category>欢迎</category>
+      </categories>
+      <tags>
+        <tag>欢迎</tag>
+      </tags>
+  </entry>
 </search>
