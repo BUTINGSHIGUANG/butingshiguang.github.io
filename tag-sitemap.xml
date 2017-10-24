@@ -2,13 +2,6 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://butingshiguang.github.io/tags/%E6%AC%A2%E8%BF%8E/</loc>
-        <lastmod>2017-10-12T14:35:15.410Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://butingshiguang.github.io/tags/%E6%B5%8B%E8%AF%95/</loc>
         <lastmod>2017-10-19T08:32:25.455Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -32,6 +25,20 @@
     <url>
         <loc>https://butingshiguang.github.io/tags/java/</loc>
         <lastmod>2017-10-21T15:49:19.295Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://butingshiguang.github.io/tags/%E6%AC%A2%E8%BF%8E/</loc>
+        <lastmod>2017-10-21T16:10:31.515Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://butingshiguang.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
+        <lastmod>2017-10-24T04:18:19.836Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

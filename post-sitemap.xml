@@ -7,6 +7,22 @@
     </url>
 
     <url>
+        <loc>https://butingshiguang.github.io/2017/10/24/20171024/</loc>
+        <lastmod>2017-10-24T04:18:19.836Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://butingshiguang.github.io/2017/10/11/hello-world/</loc>
+        <lastmod>2017-10-21T16:10:31.515Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://butingshiguang.github.io/2017/10/19/20171019/</loc>
         <lastmod>2017-10-21T15:49:19.295Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,14 +41,6 @@
     <url>
         <loc>https://butingshiguang.github.io/2017/10/12/20171012/</loc>
         <lastmod>2017-10-19T08:32:25.455Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://butingshiguang.github.io/2017/10/11/hello-world/</loc>
-        <lastmod>2017-10-12T14:35:15.410Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
