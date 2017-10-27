@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://butingshiguang.github.io/"/>
-  <updated>2017-10-27T13:12:58.798Z</updated>
+  <updated>2017-10-27T13:23:48.256Z</updated>
   <id>https://butingshiguang.github.io/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://butingshiguang.github.io/2017/10/27/20171026/"/>
     <id>https://butingshiguang.github.io/2017/10/27/20171026/</id>
     <published>2017-10-27T12:47:10.000Z</published>
-    <updated>2017-10-27T13:12:58.798Z</updated>
+    <updated>2017-10-27T13:23:48.256Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="20171026面试问题"><a href="#20171026面试问题" class="headerlink" title=" 20171026面试问题 "></a><center> 20171026面试问题 </center></h1><ul><li>java sleep()为什么要捕获异常</li><li>Java位图</li><li>JavaEE中会用到的设计模式</li><li>Java读取一个mp3文件时可以采用哪种流？字符流，字节流，数据流</li><li>Java虚拟机如何加载一个Java类<a id="more"></a><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1></li><li>认准一个方向</li><li>把该方向的主流技术栈学会，会用但不求十分精深</li><li>Spring+Strus+Hibernate</li><li>做JavaEE​要会前端CSS-HTML-JAVASCRIPT</li><li>在必要时候能够顶替前端人员进行开发</li><li>熟练应用设计模式</li><li>多刷题，应对技术面试～</li></ul><h1 id="前景了解"><a href="#前景了解" class="headerlink" title="前景了解"></a>前景了解</h1><ul><li>Android Application方向趋于饱和，找工作不易</li><li>嵌入式方向，c++,c,vb,Qt,树莓派，Arduino</li><li>C++找人少，C++对程序员要求高，难度大易出bug</li><li>Java</li></ul><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul><li>由 Thread 提供并受 Thread.sleep() 和 Object.wait() 支持的中断机制就是一种取消机制；它允许一个线程请求另一个线程停止它正在做的事情。当一个方法抛出 InterruptedException 时，它是在告诉您，如果执行该方法的线程被中断，它将尝试停止它正在做的事情而提前返回，并通过抛出 InterruptedException 表明它提前返回。 行为良好的阻塞库方法应该能对中断作出响应并抛出 InterruptedException，以便能够用于可取消活动中，而不至于影响响应。</li></ul><h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><ul><li>只有不断加强自己某一方面的技术才能得到用人单位的认可</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h1><ul><li>java sleep()为什么要捕获异常</li><li>Java位图</li><li>JavaEE中会用到的设计模式</li><li>Java读取一个mp3文件时可以采用哪种流？字符流，字节流，数据流</li><li>Java虚拟机如何加载一个Java类<a id="more"></a><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1></li><li>认准一个方向</li><li>把该方向的主流技术栈学会，会用但不求十分精深</li><li>Spring+Strus+Hibernate</li><li>做JavaEE​要会前端CSS-HTML-JAVASCRIPT</li><li>在必要时候能够顶替前端人员进行开发</li><li>熟练应用设计模式</li><li>多刷题，应对技术面试～</li></ul><h1 id="前景了解"><a href="#前景了解" class="headerlink" title="前景了解"></a>前景了解</h1><ul><li>Android Application方向趋于饱和，找工作不易</li><li>嵌入式方向，c++,c,vb,Qt,树莓派，Arduino</li><li>C++找人少，C++对程序员要求高，难度大易出bug</li><li>Java</li></ul><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul><li>由 Thread 提供并受 Thread.sleep() 和 Object.wait() 支持的中断机制就是一种取消机制；它允许一个线程请求另一个线程停止它正在做的事情。当一个方法抛出 InterruptedException 时，它是在告诉您，如果执行该方法的线程被中断，它将尝试停止它正在做的事情而提前返回，并通过抛出 InterruptedException 表明它提前返回。 行为良好的阻塞库方法应该能对中断作出响应并抛出 InterruptedException，以便能够用于可取消活动中，而不至于影响响应。</li></ul><h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><ul><li>只有不断加强自己某一方面的技术才能得到用人单位的认可</li></ul>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;20171026面试问题&quot;&gt;&lt;a href=&quot;#20171026面试问题&quot; class=&quot;headerlink&quot; title=&quot; 20171026面试问题 &quot;&gt;&lt;/a&gt;&lt;center&gt; 20171026面试问题 &lt;/center&gt;&lt;/h1&gt;&lt;ul&gt;
+      &lt;h1 id=&quot;面试问题&quot;&gt;&lt;a href=&quot;#面试问题&quot; class=&quot;headerlink&quot; title=&quot;面试问题&quot;&gt;&lt;/a&gt;面试问题&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;java sleep()为什么要捕获异常&lt;/li&gt;
 &lt;li&gt;Java位图&lt;/li&gt;
 &lt;li&gt;JavaEE中会用到的设计模式&lt;/li&gt;
