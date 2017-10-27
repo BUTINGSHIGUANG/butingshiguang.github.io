@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[20171026面试小结]]></title>
+    <url>%2F2017%2F10%2F27%2F20171026%2F</url>
+    <content type="text"><![CDATA[20171026面试问题 java sleep()为什么要捕获异常 Java位图 JavaEE中会用到的设计模式 Java读取一个mp3文件时可以采用哪种流？字符流，字节流，数据流 Java虚拟机如何加载一个Java类 总结 认准一个方向 把该方向的主流技术栈学会，会用但不求十分精深 Spring+Strus+Hibernate 做JavaEE​要会前端CSS-HTML-JAVASCRIPT 在必要时候能够顶替前端人员进行开发 熟练应用设计模式 多刷题，应对技术面试～ 前景了解 Android Application方向趋于饱和，找工作不易 嵌入式方向，c++,c,vb,Qt,树莓派，Arduino C++找人少，C++对程序员要求高，难度大易出bug Java 解决方案 由 Thread 提供并受 Thread.sleep() 和 Object.wait() 支持的中断机制就是一种取消机制；它允许一个线程请求另一个线程停止它正在做的事情。当一个方法抛出 InterruptedException 时，它是在告诉您，如果执行该方法的线程被中断，它将尝试停止它正在做的事情而提前返回，并通过抛出 InterruptedException 表明它提前返回。 行为良好的阻塞库方法应该能对中断作出响应并抛出 InterruptedException，以便能够用于可取消活动中，而不至于影响响应。 最后 只有不断加强自己某一方面的技术才能得到用人单位的认可]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[1024程序员节快乐!!!]]></title>
     <url>%2F2017%2F10%2F24%2F20171024%2F</url>
     <content type="text"><![CDATA[祝地球上的程序员们节日愉快，代码无bug！ 有人问一个程序员借1000块钱，程序员说借你1024块凑个整吧~那人一脸懵逼]]></content>
