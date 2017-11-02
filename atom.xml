@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://butingshiguang.github.io/"/>
-  <updated>2017-11-02T15:06:50.376Z</updated>
+  <updated>2017-11-02T15:13:24.559Z</updated>
   <id>https://butingshiguang.github.io/</id>
   
   <author>
@@ -21,19 +21,20 @@
     <link href="https://butingshiguang.github.io/2017/11/02/20171102/"/>
     <id>https://butingshiguang.github.io/2017/11/02/20171102/</id>
     <published>2017-11-02T14:48:22.000Z</published>
-    <updated>2017-11-02T15:06:50.376Z</updated>
+    <updated>2017-11-02T15:13:24.559Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h1><ul><li>什么是面向对象？(OOP)</li><li>C语言创建线程？(Linux fork()进程)</li><li>C语言垃圾回收机制？（手动释放free()）</li><li>对Oracle了解吗？(北京、深圳、苏州三个研发中心，昆明是培训机构)</li><li>Java三大框架SSH玩的溜吗？</li><li>用过哪些数据库？(MySQL,SQLite3)</li><li>用过Nginx做过负载均衡吗？</li><li>何为分布式和集群？(面试官说:分布式是做一件事情的各个小部分(不同的事情),集群是做同一件事情)</li><li>面试官说C和java是很像的，我当时就像给他一巴掌，他只懂Java</li><li>你为什么想搞IT？(没有为什么)</li><li>你做过什么项目吗？(Qt Music Player, 滚-垃圾)</li></ul><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul><li>面试官只懂java，他们公司想招JavaEE程序员，然而我是主攻CPlusPlus，故。。。</li><li>最后推荐我去他们的管培生项目(JavaEE)，学费16k，工作后慢慢还——-滚，还不如自己学!</li><li>我怀疑这就是个阴谋，他们把我骗过去面试就是为了培训班招人。。。(吐血，套路深…)</li></ul><h1 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h1><ul><li>技术才是最重要的，对一个程序员来说，所以我得回去练技术了。。。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h1><ul><li>什么是面向对象？(OOP)</li><li>C语言创建线程？(Linux fork()进程)</li><li>C语言垃圾回收机制？（手动释放free()）</li><li>对Oracle了解吗？(北京、深圳、苏州三个研发中心，昆明是培训机构)</li><li>Java三大框架SSH玩的溜吗？</li><li>用过哪些数据库？(MySQL,SQLite3)</li><li>用过Nginx做过负载均衡吗？<a id="more"></a></li><li>何为分布式和集群？(面试官说:分布式是做一件事情的各个小部分(不同的事情),集群是做同一件事情)</li><li>面试官说C和java是很像的，我当时就像给他一巴掌，他只懂Java</li><li>你为什么想搞IT？(没有为什么)</li><li>你做过什么项目吗？(Qt Music Player, 滚-垃圾)</li></ul><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul><li>面试官只懂java，他们公司想招JavaEE程序员，然而我是主攻CPlusPlus，故。。。</li><li>最后推荐我去他们的管培生项目(JavaEE)，学费16k，工作后慢慢还——-滚，还不如自己学!</li><li>我怀疑这就是个阴谋，他们把我骗过去面试就是为了培训班招人。。。(吐血，套路深…)</li></ul><h1 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h1><ul><li>技术才是最重要的，对一个程序员来说，所以我得回去练技术了。。。</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h1 id=&quot;面试问题&quot;&gt;&lt;a href=&quot;#面试问题&quot; class=&quot;headerlink&quot; title=&quot;面试问题&quot;&gt;&lt;/a&gt;面试问题&lt;/h1&gt;&lt;ul&gt;
+      &lt;h1 id=&quot;面试问题&quot;&gt;&lt;a href=&quot;#面试问题&quot; class=&quot;headerlink&quot; title=&quot;面试问题&quot;&gt;&lt;/a&gt;面试问题&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;什么是面向对象？(OOP)&lt;/li&gt;
 &lt;li&gt;C语言创建线程？(Linux fork()进程)&lt;/li&gt;
-&lt;li
-      
+&lt;li&gt;C语言垃圾回收机制？（手动释放free()）&lt;/li&gt;
+&lt;li&gt;对Oracle了解吗？(北京、深圳、苏州三个研发中心，昆明是培训机构)&lt;/li&gt;
+&lt;li&gt;Java三大框架SSH玩的溜吗？&lt;/li&gt;
+&lt;li&gt;用过哪些数据库？(MySQL,SQLite3)&lt;/li&gt;
+&lt;li&gt;用过Nginx做过负载均衡吗？&lt;/li&gt;&lt;/ul&gt;
     
     </summary>
     
