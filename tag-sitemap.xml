@@ -30,13 +30,6 @@
     </url>
 
     <url>
-        <loc>https://butingshiguang.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
-        <lastmod>2017-11-21T05:57:06.706Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://butingshiguang.github.io/tags/%E7%BC%96%E7%A8%8B/</loc>
         <lastmod>2017-12-29T15:22:41.121Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -53,6 +46,13 @@
     <url>
         <loc>https://butingshiguang.github.io/tags/%E7%88%AC%E8%99%AB/</loc>
         <lastmod>2017-12-29T15:22:41.121Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://butingshiguang.github.io/tags/%E9%9A%8F%E7%AC%94/</loc>
+        <lastmod>2018-01-08T12:39:07.965Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
