@@ -1,119 +1,377 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title><![CDATA[不坚持是不会学到东西的]]></title>
-    <url>%2F2018%2F01%2F08%2F20180108%2F</url>
-    <content type="text"><![CDATA[不坚持是不会学到东西的，有的时候优秀的东西一定是在考验的环境里熬出来的 马云-演讲]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[豆瓣爬虫1]]></title>
-    <url>%2F2017%2F12%2F29%2F20171229%2F</url>
-    <content type="text"><![CDATA[豆瓣热门电影评论爬虫环境 Python36 Chrome 分词库:jieba 词云:wordcloud 解析DOM:beautifulsoup4 绘图:matplotlib 数据处理:pandas, numpy 以上模块均可通过 pip install ** 安装 学会Google, Baidu, 看博客 开始吧^_^网页分析 直接上代码，注释很详细123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899# coding:utf-8__author__ = 'buting'from urllib import requestfrom http import cookiejarfrom urllib import parseimport requestsfrom bs4 import BeautifulSoup as bsimport reimport jiebaimport pandas as pdimport numpyfrom wordcloud import WordCloudimport matplotlib.pyplot as pltimport matplotlibimport timedef getMovieIdList(): head = &#123;&#125; head['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36' head['Connection'] = 'keep-alive' head['Host'] = 'movie.douban.com' reqs = request.urlopen(request.Request('https://movie.douban.com/nowplaying/wuhan/', headers = head)) html_data = reqs.read().decode('utf-8') soup = bs(html_data, 'html.parser') # 使用beautifulsoup解析html nowplaying = soup.find_all('div', id = 'nowplaying') # 找到容纳影片的div nowplaying = nowplaying[0].find_all('li', class_ = 'list-item') # 找到各个影片li nowplaying_movie_id_name = [] for movie in nowplaying: movie_id_name = &#123;&#125; movie_id_name = dict(zip( ('id', 'score', 'director', 'actors', 'duration'), (movie['data-subject'], movie['data-score'], movie['data-director'], movie['data-actors'], movie['data-duration']) )) # movie_id_name['id'] = movie['data-subject'] movie_id_name['name'] = movie.find('img')['alt'] nowplaying_movie_id_name.append(movie_id_name) return nowplaying_movie_id_namedef getComments(id, pageNum): start = 0 if type(pageNum) == type(7) and pageNum &gt; 0: start = (pageNum - 1) * 20 url = 'https://movie.douban.com/subject/' + id + '/comments' + '?start=' + str(start) + '&amp;limit=20' head = &#123;&#125; head['User-Agent'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36' reqs = request.urlopen(request.Request(url, headers = head)) html_data = reqs.read().decode('utf-8') soup = bs(html_data, 'html.parser') comment = soup.find_all('div', class_ = 'comment') comments = '' for div in comment: if div.find('p').string is not None: comments += div.find('p').string.strip() return commentsdef spider(): # 获取评论 movie_info_dict_list = getMovieIdList() comments = '' for i in range(10): if i % 8 == 0: time.sleep(0.2) comments += getComments(movie_info_dict_list[0]['id'], i + 1) # 提取汉字, 汉字unicode编码开头至结尾 pattern = re.compile(r'[\u4e00-\u9fa5]+') characters_list = re.findall(pattern, comments) ch_comments = ''.join(characters_list) # 使用结巴分词进行中文分词 ch_comments_list = jieba.lcut(ch_comments) # 通过pandas将词汇列表生成一张数据表格 ch_df = pd.DataFrame(&#123;'segment':ch_comments_list&#125;) # 获取停用词数据表 stop_ch = pd.read_csv("stopwords.txt", index_col=False, quoting=3, sep="\t", names=['stopch'], encoding='utf-8') # 使用pandas去掉停用词 ch_df = ch_df[~ch_df.segment.isin(stop_ch.stopch)] # 词频统计,生成一张词语与词频数的数据表 ch_fre_df = ch_df.groupby(by=['segment'])['segment'].agg(&#123;"计数":numpy.size&#125;) ch_fre_df = ch_fre_df.reset_index().sort_values(by=["计数"],ascending=False) # 词云显示 wordcloud = WordCloud(font_path="simhei.ttf",background_color="#ffffff", width=1200, height=800, min_font_size=20, max_words=2000, max_font_size=100) ch_frequence = &#123;x[0]:x[1] for x in ch_fre_df.head(1000).values&#125; wordcloud = wordcloud.fit_words(ch_frequence) # 绘图显示保存 plt.imshow(wordcloud) plt.savefig('./' + movie_info_dict_list[0]['name'] + '_douban_wordcloud.png', dpi=800) plt.show()if __name__ == '__main__': print('https://butingshiguang.github.io/') spider() 结果展示]]></content>
-      <categories>
-        <category>编程</category>
-        <category>爬虫</category>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-        <tag>python</tag>
-        <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[记金蝶(Kingdee)软件面试 2017-11-21]]></title>
-    <url>%2F2017%2F11%2F21%2F20171121%2F</url>
-    <content type="text"><![CDATA[面试问题 HR 2分钟自我介绍 售前与开发的关系(他说他们公司的开发经理也是售前经理) 来金蝶面试之前做了多少准备 什么是sword(音译)分析方法 什么是??分析方法 一个项目的完整过程(可行性分析，需求分析，市场分析，风险分析 etc.) 这是你的第几次面试 有女朋友吗 你觉得自己适合干程序员吗 技术经理 说说你对java的理解 说说你对OO(面向对象)的理解 做过什么项目吗 数据库中存储过程 与 函数 的区别 向面试官提问 什么时候出面试结果(一周内) 你们实习期多长(毕业前都是实习期) 实习期工资(没有，只有1k左右的补贴) 过了面试什么时候可以过去实习(没课以后，随时可以来实习) 你们实习期淘汰的人是自己走的还是公司直接解雇的(都有，很多不能坚持下来，实习是以学习为主，需要对IT行业热爱，能坚持) 总结 这家公司需要对这行热爱的人，能坚持，实习期是以学习为主要目的 公司实习淘汰率较高 主要搞后端开发 人资需要对自己有信心能够挖掘客户价值，说服客户的人；技术部门需要热爱技术，能坚持到最后的人 针对不同的公司，需求不一样，有的公司只要那种能够立刻上手的人(小公司)，有的需要能够坚持学习下来的人，沟通能力强的人(中大型公司)，这家属于后者，工资比较低(云南IT十分落后，工资很低) 自学与工作中学习:工作中学到的更牢靠更实用，能够体会软件项目开发的完整过程]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[20171101面试记录(Oracle China)]]></title>
-    <url>%2F2017%2F11%2F02%2F20171102%2F</url>
-    <content type="text"><![CDATA[面试问题 什么是面向对象？(OOP) C语言创建线程？(Linux fork()进程) C语言垃圾回收机制？（手动释放free()） 对Oracle了解吗？(北京、深圳、苏州三个研发中心，昆明是培训机构) Java三大框架SSH玩的溜吗？ 用过哪些数据库？(MySQL,SQLite3) 用过Nginx做过负载均衡吗？ 何为分布式和集群？(面试官说:分布式是做一件事情的各个小部分(不同的事情),集群是做同一件事情) 面试官说C和java是很像的，我当时就像给他一巴掌，他只懂Java 你为什么想搞IT？(没有为什么) 你做过什么项目吗？(Qt Music Player, 滚-垃圾) 总结 面试官只懂java，他们公司想招JavaEE程序员，然而我是主攻CPlusPlus，故。。。 最后推荐我去他们的管培生项目(JavaEE)，学费16k，工作后慢慢还——-滚，还不如自己学! 我怀疑这就是个阴谋，他们把我骗过去面试就是为了培训班招人。。。(吐血，套路深…) 吐槽 技术才是最重要的，对一个程序员来说，所以我得回去练技术了。。。]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[20171026面试小结]]></title>
-    <url>%2F2017%2F10%2F27%2F20171026%2F</url>
-    <content type="text"><![CDATA[面试问题 java sleep()为什么要捕获异常 Java位图 JavaEE中会用到的设计模式 Java读取一个mp3文件时可以采用哪种流？字符流，字节流，数据流 Java虚拟机如何加载一个Java类 总结 认准一个方向 把该方向的主流技术栈学会，会用但不求十分精深 Spring+Strus+Hibernate 做JavaEE​要会前端CSS-HTML-JAVASCRIPT 在必要时候能够顶替前端人员进行开发 熟练应用设计模式 多刷题，应对技术面试～ 前景了解 Android Application方向趋于饱和，找工作不易 嵌入式方向，c++,c,vb,Qt,树莓派，Arduino C++找人少，C++对程序员要求高，难度大易出bug Java 解决方案 由 Thread 提供并受 Thread.sleep() 和 Object.wait() 支持的中断机制就是一种取消机制；它允许一个线程请求另一个线程停止它正在做的事情。当一个方法抛出 InterruptedException 时，它是在告诉您，如果执行该方法的线程被中断，它将尝试停止它正在做的事情而提前返回，并通过抛出 InterruptedException 表明它提前返回。 行为良好的阻塞库方法应该能对中断作出响应并抛出 InterruptedException，以便能够用于可取消活动中，而不至于影响响应。 最后 只有不断加强自己某一方面的技术才能得到用人单位的认可]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[1024程序员节快乐!!!]]></title>
-    <url>%2F2017%2F10%2F24%2F20171024%2F</url>
-    <content type="text"><![CDATA[祝地球上的程序员们节日愉快，代码无bug！ 有人问一个程序员借1000块钱，程序员说借你1024块凑个整吧~那人一脸懵逼]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[java8学习笔记]]></title>
-    <url>%2F2017%2F10%2F19%2F20171019%2F</url>
-    <content type="text"><![CDATA[java8java annotation (注解) @Override 覆写 @Deprecated 过期 @SuppressWarnings({ “rawtypes”, “unchecked” }) 压制警告 Java 泛型通配符 Message&lt;?&gt;: 泛型类型通配 Message&lt;? extends 类&gt;: 设置泛型上限，子类 Message&lt;? super 类&gt;: 设置泛型下限，父类 泛型接口1234567891011121314interface IMessage&lt;T&gt; &#123; //设置泛型接口 public void print(T t);&#125;class MessageImpl&lt;T&gt; implements IMessage&lt;T&gt; &#123; public void print(T t) &#123; System.out.println(t); &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; IMessage&lt;String&gt; msg = new MessageImpl&lt;String&gt;(); msg.print("Hello World!"); &#125;&#125; 泛型方法123public static &lt;T&gt; T fun(T t) &#123; //T的类型由传入类型决定 return t;&#125; 枚举12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364enum Color &#123; //相当于一个类继承了Enum类(抽象类)而已 RED,GREEN,BLUE;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Color red = Color.RED; System.out.println(red); for (Color c : Color.values()) &#123; //values() System.out.println(c.ordinal() + " - "); &#125; &#125;&#125;//扩充枚举功能enum Color &#123; //相当于一个类继承了Enum类(抽象类)而已 RED("红色"),GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Color red = Color.RED; System.out.println(red); for (Color c : Color.values()) &#123; //values() System.out.println(c); //调用toString() &#125; &#125;&#125;//枚举实现接口enum Color implements Message &#123; RED("红色"),GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125; public String getTitle() &#123; return title; &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; Message msg = Color.RED; System.out.println(msg.getTitle()); &#125;&#125;//枚举最变态的做法enum Color implements Message &#123; RED("红色")&#123; public String getTitle() &#123; return "自己的" + this.title; &#125; &#125;,GREEN("绿色"),BLUE("蓝色"); private String title; private Color(String title) &#123; this.title = title; &#125; public String getTitle() &#123; return title; &#125;&#125; 泛型中定义普通方法使用default在接口中定义普通方法 使用static在接口中定义普通方法12345678910111213141516171819202122interface IMessage &#123; public void print(); default void fun() &#123; //此处定义了一个普通方法 System.out.println("毁三观的方法"); &#125; static void get() &#123; System.out.println("直接由接口调用!"); &#125;&#125;class MessageImpl implements IMessage &#123; @Override public void print() &#123; System.out.println("Hello World!"); &#125;&#125;public class TestDemo &#123; public static void main(String[] args)&#123; IMessage msg = new MessageImpl(); msg.fun(); //接口中直接定义的 &#125; IMessage.get();&#125; lambda表达式匿名内部类123456789101112public class TestDemo &#123; public static void main(String[] args)&#123; fun(new IMessage() &#123; public void print() &#123; System.out.println("Hello World!!!"); &#125; &#125;); &#125;&#125;// lambdafun( () -&gt; System.out.println("Hello World!!!") ); lambda (参数表)-&gt; 单行语句; (参数表)-&gt; {单行语句}; (参数表)-&gt; 表达式; 123456789101112interface IMessage &#123; public void print(String str);&#125;public class TestDemo &#123; public static void main(String[] args)&#123; fun((s) -&gt; System.out.println(s)); &#125; public static void fun(IMessage msg) &#123; msg.print("Hello World!"); &#125;&#125; 4种方法引用 引用静态方法: 类名称::static 方法名称; 引用某个对象的方法: 实例化对象::普通方法; 引用特定类型的方法: 特定类::普通方法; 引用构造方法: 类名称::new; 123456789101112@FunctionalInterface //此注解指定该接口内部只存在一个方法,即函数式接口(可以引用函数)interface IMessage&lt;P,R&gt; &#123; public R zhuanhuan(P p);&#125;public class TestDemo &#123; public static void main(String[] args)&#123; //引用类的普通方法 IMessage&lt;Integer,String&gt; msg = String::valueOf; String str = msg.zhuanhuan(1000); System.out.println(str.replaceAll("0", "9")); &#125;&#125;]]></content>
-      <categories>
-        <category>编程</category>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[谈谈我对“墙”的看法]]></title>
-    <url>%2F2017%2F10%2F13%2F20171013%2F</url>
-    <content type="text"><![CDATA[首先，这里的墙指的是中国的防火长城GFW，有很多被屏蔽的国外网站如Google,Youtube,etc.很多人对墙的看法不一，大多数都持有批评的态度。 对于普通用户来说：我认为墙的存在是有好处的，这个社会有太多对中国(包括政府)的批评和抹黑，特别是在国外，Youtube上面骂中国的一大堆。如果完全开发对国外网站的访问，势必存在一些没有自己独立思考的人会跟风起哄，而且国外对中国公民散布谣言，乱我军心也是必然存在的。 对于IT/计算机等从业者或某些爱好者来说，访问Google等网站是必须的，所以有时候难免会翻墙，GFW造成了很大的不便。 总的说来，GFW的存在有着一定的必要性，利大于弊。]]></content>
-      <categories>
-        <category>科技</category>
-      </categories>
-      <tags>
-        <tag>科技</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[今天星期四，稍微弄了一下]]></title>
-    <url>%2F2017%2F10%2F12%2F20171012%2F</url>
-    <content type="text"><![CDATA[测试测试时光不停时光不停 不停 新浪微博]]></content>
-      <categories>
-        <category>测试</category>
-      </categories>
-      <tags>
-        <tag>测试</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[欢迎来到不停的博客，我还有一个名字叫Tesla Chan]]></title>
-    <url>%2F2017%2F10%2F11%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to KM!这是我的第二个博客，使用GithubPages搭建，我是 TeslaChan @buting，一个热爱技术，爱好科学的骚年~~~ 以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点 Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
-      <categories>
-        <category>欢迎</category>
-      </categories>
-      <tags>
-        <tag>欢迎</tag>
-      </tags>
-  </entry>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[不坚持是不会学到东西的]]></title>
+      <url>/2018/01/08/20180108/</url>
+      <content type="html"><![CDATA[<h1 id="不坚持是不会学到东西的，有的时候优秀的东西一定是在考验的环境里熬出来的"><a href="#不坚持是不会学到东西的，有的时候优秀的东西一定是在考验的环境里熬出来的" class="headerlink" title="不坚持是不会学到东西的，有的时候优秀的东西一定是在考验的环境里熬出来的"></a>不坚持是不会学到东西的，有的时候优秀的东西一定是在考验的环境里熬出来的</h1><a id="more"></a>
+<p> 马云-演讲</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[豆瓣爬虫1]]></title>
+      <url>/2017/12/29/20171229/</url>
+      <content type="html"><![CDATA[<h1 id="豆瓣热门电影评论爬虫"><a href="#豆瓣热门电影评论爬虫" class="headerlink" title="豆瓣热门电影评论爬虫"></a>豆瓣热门电影评论爬虫</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ol>
+<li>Python36</li>
+<li>Chrome</li>
+<li>分词库:jieba 词云:wordcloud 解析DOM:beautifulsoup4 绘图:matplotlib 数据处理:pandas, numpy</li>
+<li>以上模块均可通过 <code>pip install **</code> 安装</li>
+<li>学会Google, Baidu, 看博客<a id="more"></a>
+<h2 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧^_^"></a>开始吧^_^</h2><h2 id="网页分析"><a href="#网页分析" class="headerlink" title="网页分析"></a>网页分析</h2><img src="/2017/12/29/20171229/001.png" alt="分析网页"><br><img src="/2017/12/29/20171229/002.png" alt="分析网页"></li>
+</ol>
+<h2 id="直接上代码，注释很详细"><a href="#直接上代码，注释很详细" class="headerlink" title="直接上代码，注释很详细"></a>直接上代码，注释很详细</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding:utf-8</span></div><div class="line">__author__ = <span class="string">'buting'</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</div><div class="line"><span class="keyword">from</span> http <span class="keyword">import</span> cookiejar</div><div class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup <span class="keyword">as</span> bs</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> jieba</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy</div><div class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> matplotlib</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getMovieIdList</span><span class="params">()</span>:</span></div><div class="line">    head = &#123;&#125;</div><div class="line">    head[<span class="string">'User-Agent'</span>] = <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36'</span></div><div class="line">    head[<span class="string">'Connection'</span>] = <span class="string">'keep-alive'</span></div><div class="line">    head[<span class="string">'Host'</span>] = <span class="string">'movie.douban.com'</span></div><div class="line">    reqs = request.urlopen(request.Request(<span class="string">'https://movie.douban.com/nowplaying/wuhan/'</span>, headers = head))</div><div class="line">    html_data = reqs.read().decode(<span class="string">'utf-8'</span>)</div><div class="line">    soup = bs(html_data, <span class="string">'html.parser'</span>) <span class="comment"># 使用beautifulsoup解析html</span></div><div class="line">    nowplaying = soup.find_all(<span class="string">'div'</span>, id = <span class="string">'nowplaying'</span>)    <span class="comment"># 找到容纳影片的div</span></div><div class="line">    nowplaying = nowplaying[<span class="number">0</span>].find_all(<span class="string">'li'</span>, class_ = <span class="string">'list-item'</span>) <span class="comment"># 找到各个影片li</span></div><div class="line">    nowplaying_movie_id_name = []</div><div class="line">    <span class="keyword">for</span> movie <span class="keyword">in</span> nowplaying:</div><div class="line">        movie_id_name = &#123;&#125;</div><div class="line">        movie_id_name = dict(zip(</div><div class="line">            (<span class="string">'id'</span>, <span class="string">'score'</span>, <span class="string">'director'</span>, <span class="string">'actors'</span>, <span class="string">'duration'</span>), </div><div class="line">            (movie[<span class="string">'data-subject'</span>], movie[<span class="string">'data-score'</span>], movie[<span class="string">'data-director'</span>], movie[<span class="string">'data-actors'</span>], movie[<span class="string">'data-duration'</span>])</div><div class="line">            ))</div><div class="line">        <span class="comment"># movie_id_name['id'] = movie['data-subject']</span></div><div class="line">        movie_id_name[<span class="string">'name'</span>] = movie.find(<span class="string">'img'</span>)[<span class="string">'alt'</span>]</div><div class="line">        nowplaying_movie_id_name.append(movie_id_name)</div><div class="line">    <span class="keyword">return</span> nowplaying_movie_id_name</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getComments</span><span class="params">(id, pageNum)</span>:</span></div><div class="line">    start = <span class="number">0</span></div><div class="line">    <span class="keyword">if</span> type(pageNum) == type(<span class="number">7</span>) <span class="keyword">and</span> pageNum &gt; <span class="number">0</span>:</div><div class="line">        start = (pageNum - <span class="number">1</span>) * <span class="number">20</span></div><div class="line">    url = <span class="string">'https://movie.douban.com/subject/'</span> + id + <span class="string">'/comments'</span> + <span class="string">'?start='</span> + str(start) + <span class="string">'&amp;limit=20'</span></div><div class="line">    head = &#123;&#125;</div><div class="line">    head[<span class="string">'User-Agent'</span>] = <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36'</span></div><div class="line">    reqs = request.urlopen(request.Request(url, headers = head))</div><div class="line">    html_data = reqs.read().decode(<span class="string">'utf-8'</span>)</div><div class="line"></div><div class="line">    soup = bs(html_data, <span class="string">'html.parser'</span>)</div><div class="line">    comment = soup.find_all(<span class="string">'div'</span>, class_ = <span class="string">'comment'</span>)</div><div class="line">    comments = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> div <span class="keyword">in</span> comment:</div><div class="line">        <span class="keyword">if</span> div.find(<span class="string">'p'</span>).string <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</div><div class="line">            comments += div.find(<span class="string">'p'</span>).string.strip()</div><div class="line">    <span class="keyword">return</span> comments</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">spider</span><span class="params">()</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># 获取评论</span></div><div class="line">    movie_info_dict_list = getMovieIdList()</div><div class="line">    comments = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</div><div class="line">        <span class="keyword">if</span> i % <span class="number">8</span> == <span class="number">0</span>:</div><div class="line">            time.sleep(<span class="number">0.2</span>)</div><div class="line">        comments += getComments(movie_info_dict_list[<span class="number">0</span>][<span class="string">'id'</span>], i + <span class="number">1</span>)</div><div class="line">    <span class="comment"># 提取汉字, 汉字unicode编码开头至结尾</span></div><div class="line">    pattern = re.compile(<span class="string">r'[\u4e00-\u9fa5]+'</span>)</div><div class="line">    characters_list = re.findall(pattern, comments)</div><div class="line">    ch_comments = <span class="string">''</span>.join(characters_list)</div><div class="line">    </div><div class="line">    <span class="comment"># 使用结巴分词进行中文分词</span></div><div class="line">    ch_comments_list = jieba.lcut(ch_comments)</div><div class="line">    <span class="comment"># 通过pandas将词汇列表生成一张数据表格</span></div><div class="line">    ch_df = pd.DataFrame(&#123;<span class="string">'segment'</span>:ch_comments_list&#125;)</div><div class="line">    <span class="comment"># 获取停用词数据表</span></div><div class="line">    stop_ch = pd.read_csv(<span class="string">"stopwords.txt"</span>, index_col=<span class="keyword">False</span>, quoting=<span class="number">3</span>, sep=<span class="string">"\t"</span>, names=[<span class="string">'stopch'</span>], encoding=<span class="string">'utf-8'</span>)</div><div class="line">    <span class="comment"># 使用pandas去掉停用词</span></div><div class="line">    ch_df = ch_df[~ch_df.segment.isin(stop_ch.stopch)]</div><div class="line">    </div><div class="line">    <span class="comment"># 词频统计,生成一张词语与词频数的数据表</span></div><div class="line">    ch_fre_df = ch_df.groupby(by=[<span class="string">'segment'</span>])[<span class="string">'segment'</span>].agg(&#123;<span class="string">"计数"</span>:numpy.size&#125;)</div><div class="line">    ch_fre_df = ch_fre_df.reset_index().sort_values(by=[<span class="string">"计数"</span>],ascending=<span class="keyword">False</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 词云显示</span></div><div class="line">    wordcloud = WordCloud(font_path=<span class="string">"simhei.ttf"</span>,background_color=<span class="string">"#ffffff"</span>,</div><div class="line">                        width=<span class="number">1200</span>, height=<span class="number">800</span>, min_font_size=<span class="number">20</span>, max_words=<span class="number">2000</span>, max_font_size=<span class="number">100</span>)</div><div class="line">    ch_frequence = &#123;x[<span class="number">0</span>]:x[<span class="number">1</span>] <span class="keyword">for</span> x <span class="keyword">in</span> ch_fre_df.head(<span class="number">1000</span>).values&#125;</div><div class="line">    wordcloud = wordcloud.fit_words(ch_frequence)</div><div class="line"></div><div class="line">    <span class="comment"># 绘图显示保存</span></div><div class="line">    plt.imshow(wordcloud)</div><div class="line">    plt.savefig(<span class="string">'./'</span> + movie_info_dict_list[<span class="number">0</span>][<span class="string">'name'</span>] + <span class="string">'_douban_wordcloud.png'</span>, dpi=<span class="number">800</span>)</div><div class="line">    plt.show()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    print(<span class="string">'https://butingshiguang.github.io/'</span>)</div><div class="line">    spider()</div></pre></td></tr></table></figure>
+<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><p><img src="/2017/12/29/20171229/妖铃铃_douban_wordcloud.png" alt=""></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+            <category> 爬虫 </category>
+            
+            <category> python </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> python </tag>
+            
+            <tag> 爬虫 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[记金蝶(Kingdee)软件面试 2017-11-21]]></title>
+      <url>/2017/11/21/20171121/</url>
+      <content type="html"><![CDATA[<h1 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h1><ol>
+<li><p>HR</p>
+<ul>
+<li>2分钟自我介绍</li>
+<li>售前与开发的关系(他说他们公司的开发经理也是售前经理)<a id="more"></a></li>
+<li>来金蝶面试之前做了多少准备</li>
+<li>什么是sword(音译)分析方法</li>
+<li>什么是??分析方法</li>
+<li>一个项目的完整过程(可行性分析，需求分析，市场分析，风险分析 etc.)</li>
+<li>这是你的第几次面试</li>
+<li>有女朋友吗</li>
+<li>你觉得自己适合干程序员吗</li>
+</ul>
+</li>
+<li><p>技术经理</p>
+<ul>
+<li>说说你对java的理解</li>
+<li>说说你对OO(面向对象)的理解</li>
+<li>做过什么项目吗</li>
+<li>数据库中存储过程 与 函数 的区别</li>
+</ul>
+</li>
+</ol>
+<h1 id="向面试官提问"><a href="#向面试官提问" class="headerlink" title="向面试官提问"></a>向面试官提问</h1><ul>
+<li>什么时候出面试结果(一周内)</li>
+<li>你们实习期多长(毕业前都是实习期)</li>
+<li>实习期工资(没有，只有1k左右的补贴)</li>
+<li>过了面试什么时候可以过去实习(没课以后，随时可以来实习)</li>
+<li>你们实习期淘汰的人是自己走的还是公司直接解雇的(都有，很多不能坚持下来，实习是以学习为主，需要对IT行业热爱，能坚持)</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>这家公司需要对这行热爱的人，能坚持，实习期是以学习为主要目的</li>
+<li>公司实习淘汰率较高</li>
+<li>主要搞后端开发</li>
+<li>人资需要对自己有信心能够挖掘客户价值，说服客户的人；技术部门需要热爱技术，能坚持到最后的人</li>
+<li>针对不同的公司，需求不一样，有的公司只要那种能够立刻上手的人(小公司)，有的需要能够坚持学习下来的人，沟通能力强的人(中大型公司)，这家属于后者，工资比较低(云南IT十分落后，工资很低)</li>
+<li>自学与工作中学习:工作中学到的更牢靠更实用，能够体会软件项目开发的完整过程</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[20171101面试记录(Oracle China)]]></title>
+      <url>/2017/11/02/20171102/</url>
+      <content type="html"><![CDATA[<h1 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h1><ul>
+<li>什么是面向对象？(OOP)</li>
+<li>C语言创建线程？(Linux fork()进程)</li>
+<li>C语言垃圾回收机制？（手动释放free()）</li>
+<li>对Oracle了解吗？(北京、深圳、苏州三个研发中心，昆明是培训机构)</li>
+<li>Java三大框架SSH玩的溜吗？</li>
+<li>用过哪些数据库？(MySQL,SQLite3)</li>
+<li>用过Nginx做过负载均衡吗？<a id="more"></a></li>
+<li>何为分布式和集群？(面试官说:分布式是做一件事情的各个小部分(不同的事情),集群是做同一件事情)</li>
+<li>面试官说C和java是很像的，我当时就像给他一巴掌，他只懂Java</li>
+<li>你为什么想搞IT？(没有为什么)</li>
+<li>你做过什么项目吗？(Qt Music Player, 滚-垃圾)</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>面试官只懂java，他们公司想招JavaEE程序员，然而我是主攻CPlusPlus，故。。。</li>
+<li>最后推荐我去他们的管培生项目(JavaEE)，学费16k，工作后慢慢还——-滚，还不如自己学!</li>
+<li>我怀疑这就是个阴谋，他们把我骗过去面试就是为了培训班招人。。。(吐血，套路深…)</li>
+</ul>
+<h1 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h1><ul>
+<li>技术才是最重要的，对一个程序员来说，所以我得回去练技术了。。。</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[20171026面试小结]]></title>
+      <url>/2017/10/27/20171026/</url>
+      <content type="html"><![CDATA[<h1 id="面试问题"><a href="#面试问题" class="headerlink" title="面试问题"></a>面试问题</h1><ul>
+<li>java sleep()为什么要捕获异常</li>
+<li>Java位图</li>
+<li>JavaEE中会用到的设计模式</li>
+<li>Java读取一个mp3文件时可以采用哪种流？字符流，字节流，数据流</li>
+<li>Java虚拟机如何加载一个Java类<a id="more"></a>
+</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>认准一个方向</li>
+<li>把该方向的主流技术栈学会，会用但不求十分精深</li>
+<li>Spring+Strus+Hibernate</li>
+<li>做JavaEE​要会前端CSS-HTML-JAVASCRIPT</li>
+<li>在必要时候能够顶替前端人员进行开发</li>
+<li>熟练应用设计模式</li>
+<li>多刷题，应对技术面试～</li>
+</ul>
+<h1 id="前景了解"><a href="#前景了解" class="headerlink" title="前景了解"></a>前景了解</h1><ul>
+<li>Android Application方向趋于饱和，找工作不易</li>
+<li>嵌入式方向，c++,c,vb,Qt,树莓派，Arduino</li>
+<li>C++找人少，C++对程序员要求高，难度大易出bug</li>
+<li>Java</li>
+</ul>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><ul>
+<li>由 Thread 提供并受 Thread.sleep() 和 Object.wait() 支持的中断机制就是一种取消机制；它允许一个线程请求另一个线程停止它正在做的事情。当一个方法抛出 InterruptedException 时，它是在告诉您，如果执行该方法的线程被中断，它将尝试停止它正在做的事情而提前返回，并通过抛出 InterruptedException 表明它提前返回。 行为良好的阻塞库方法应该能对中断作出响应并抛出 InterruptedException，以便能够用于可取消活动中，而不至于影响响应。</li>
+</ul>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><ul>
+<li>只有不断加强自己某一方面的技术才能得到用人单位的认可</li>
+</ul>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[1024程序员节快乐!!!]]></title>
+      <url>/2017/10/24/20171024/</url>
+      <content type="html"><![CDATA[<h1 id="祝地球上的程序员们节日愉快，代码无bug！"><a href="#祝地球上的程序员们节日愉快，代码无bug！" class="headerlink" title="祝地球上的程序员们节日愉快，代码无bug！"></a><center>祝地球上的程序员们节日愉快，代码无bug！</center></h1><a id="more"></a>
+<p><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=461107563&auto=1&height=66"><br></iframe><br><strong>有人问一个程序员借1000块钱，程序员说借你1024块凑个整吧~那人一脸懵逼</strong></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 随笔 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[java8学习笔记]]></title>
+      <url>/2017/10/19/20171019/</url>
+      <content type="html"><![CDATA[<h1 id="java8"><a href="#java8" class="headerlink" title="java8"></a><strong>java8</strong></h1><h1 id="java-annotation-注解"><a href="#java-annotation-注解" class="headerlink" title="java annotation (注解)"></a>java annotation (注解)</h1><ul>
+<li>@Override 覆写</li>
+<li>@Deprecated 过期</li>
+<li>@SuppressWarnings({ “rawtypes”, “unchecked” }) 压制警告<a id="more"></a>
+</li>
+</ul>
+<h1 id="Java-泛型"><a href="#Java-泛型" class="headerlink" title="Java 泛型"></a>Java 泛型</h1><h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><ul>
+<li>Message&lt;?&gt;: 泛型类型通配</li>
+<li>Message&lt;? extends 类&gt;: 设置泛型上限，子类</li>
+<li>Message&lt;? super 类&gt;: 设置泛型下限，父类</li>
+</ul>
+<h2 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span>&lt;<span class="title">T</span>&gt; </span>&#123;     <span class="comment">//设置泛型接口</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T t)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MessageImpl</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">IMessage</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(T t)</span> </span>&#123;</div><div class="line">        System.out.println(t);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        IMessage&lt;String&gt; msg = <span class="keyword">new</span> MessageImpl&lt;String&gt;();</div><div class="line">        msg.print(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">fun</span><span class="params">(T t)</span> </span>&#123;   <span class="comment">//T的类型由传入类型决定</span></div><div class="line">    <span class="keyword">return</span> t;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">enum</span> Color &#123;            <span class="comment">//相当于一个类继承了Enum类(抽象类)而已</span></div><div class="line">    RED,GREEN,BLUE;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Color red = Color.RED;</div><div class="line">        System.out.println(red);</div><div class="line">        <span class="keyword">for</span> (Color c : Color.values()) &#123;   <span class="comment">//values()</span></div><div class="line">            System.out.println(c.ordinal() + <span class="string">" - "</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//扩充枚举功能</span></div><div class="line"><span class="keyword">enum</span> Color &#123;            <span class="comment">//相当于一个类继承了Enum类(抽象类)而已</span></div><div class="line">    RED(<span class="string">"红色"</span>),GREEN(<span class="string">"绿色"</span>),BLUE(<span class="string">"蓝色"</span>);</div><div class="line">    <span class="keyword">private</span> String title;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.title = title;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Color red = Color.RED;</div><div class="line">        System.out.println(red);</div><div class="line">        <span class="keyword">for</span> (Color c : Color.values()) &#123;   <span class="comment">//values()</span></div><div class="line">            System.out.println(c);  <span class="comment">//调用toString()</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//枚举实现接口</span></div><div class="line"><span class="keyword">enum</span> Color implements Message &#123;</div><div class="line">    RED(<span class="string">"红色"</span>),GREEN(<span class="string">"绿色"</span>),BLUE(<span class="string">"蓝色"</span>);</div><div class="line">        <span class="keyword">private</span> String title;</div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.title = title;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> title;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        Message msg = Color.RED;</div><div class="line">        System.out.println(msg.getTitle());</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//枚举最变态的做法</span></div><div class="line"><span class="keyword">enum</span> Color implements Message &#123;</div><div class="line">    RED(<span class="string">"红色"</span>)&#123;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"自己的"</span> + <span class="keyword">this</span>.title;</div><div class="line">        &#125;</div><div class="line">    &#125;,GREEN(<span class="string">"绿色"</span>),BLUE(<span class="string">"蓝色"</span>);</div><div class="line">        <span class="keyword">private</span> String title;</div><div class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Color</span><span class="params">(String title)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.title = title;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">getTitle</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> title;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="泛型中定义普通方法"><a href="#泛型中定义普通方法" class="headerlink" title="泛型中定义普通方法"></a>泛型中定义普通方法</h2><h3 id="使用default在接口中定义普通方法-使用static在接口中定义普通方法"><a href="#使用default在接口中定义普通方法-使用static在接口中定义普通方法" class="headerlink" title="使用default在接口中定义普通方法 使用static在接口中定义普通方法"></a>使用default在接口中定义普通方法 使用static在接口中定义普通方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">()</span> </span>&#123;  <span class="comment">//此处定义了一个普通方法</span></div><div class="line">        System.out.println(<span class="string">"毁三观的方法"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"直接由接口调用!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MessageImpl</span> <span class="keyword">implements</span> <span class="title">IMessage</span> </span>&#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      IMessage msg = <span class="keyword">new</span> MessageImpl();</div><div class="line">      msg.fun(); <span class="comment">//接口中直接定义的</span></div><div class="line">    &#125;</div><div class="line">    IMessage.get();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h1><h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      fun(<span class="keyword">new</span> IMessage() &#123;</div><div class="line">          <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">              System.out.println(<span class="string">"Hello World!!!"</span>);</div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// lambda</span></div><div class="line">fun( () -&gt; System.out.println(<span class="string">"Hello World!!!"</span>) );</div></pre></td></tr></table></figure>
+<h2 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h2><ul>
+<li>(参数表)-&gt; 单行语句;</li>
+<li>(参数表)-&gt; {单行语句};</li>
+<li>(参数表)-&gt; 表达式;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(String str)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      fun((s) -&gt; System.out.println(s));</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fun</span><span class="params">(IMessage msg)</span> </span>&#123;</div><div class="line">        msg.print(<span class="string">"Hello World!"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="4种方法引用"><a href="#4种方法引用" class="headerlink" title="4种方法引用"></a>4种方法引用</h1><ul>
+<li>引用静态方法: 类名称::static 方法名称;</li>
+<li>引用某个对象的方法: 实例化对象::普通方法;</li>
+<li>引用特定类型的方法: 特定类::普通方法;</li>
+<li>引用构造方法: 类名称::new;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span>   <span class="comment">//此注解指定该接口内部只存在一个方法,即函数式接口(可以引用函数)</span></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMessage</span>&lt;<span class="title">P</span>,<span class="title">R</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">zhuanhuan</span><span class="params">(P p)</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDemo</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">      <span class="comment">//引用类的普通方法</span></div><div class="line">      IMessage&lt;Integer,String&gt; msg = String::valueOf;</div><div class="line">      String str = msg.zhuanhuan(<span class="number">1000</span>);</div><div class="line">      System.out.println(str.replaceAll(<span class="string">"0"</span>, <span class="string">"9"</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程 </category>
+            
+            <category> java </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> java </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[谈谈我对“墙”的看法]]></title>
+      <url>/2017/10/13/20171013/</url>
+      <content type="html"><![CDATA[<p><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1507889844349&di=ffa8435b81ec67e60b35569c8e920bee&imgtype=0&src=http%3A%2F%2Fwww.gamemei.com%2Fbackground%2Fuploads%2Fallimg%2F20161125%2F1480042915299447.jpg" width="70%" height="50%"></p>
+<p>首先，这里的<strong>墙</strong>指的是中国的防火长城<strong>GFW</strong>，有很多被屏蔽的国外网站如<a href="https://www.google.com/ncr" target="_blank" rel="external">Google</a>,<a href="https://www.youtube.com" target="_blank" rel="external">Youtube</a>,etc.很多人对墙的看法不一，大多数都持有批评的态度。</p>
+<a id="more"></a>
+<p>对于普通用户来说：我认为墙的存在是有好处的，这个社会有太多对中国(包括政府)的批评和抹黑，特别是在国外，Youtube上面骂中国的一大堆。如果完全开发对国外网站的访问，势必存在一些没有自己独立思考的人会跟风起哄，而且国外对中国公民散布谣言，乱我军心也是必然存在的。</p>
+<p>对于IT/计算机等从业者或某些爱好者来说，访问<a href="https://www.google.com/ncr" title="Google" target="_blank" rel="external">Google</a>等网站是必须的，所以有时候难免会<strong>翻墙</strong>，GFW造成了很大的不便。</p>
+<p>总的说来，GFW的存在有着一定的必要性，利大于弊。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 科技 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 科技 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[今天星期四，稍微弄了一下]]></title>
+      <url>/2017/10/12/20171012/</url>
+      <content type="html"><![CDATA[<h1 id="测试测试"><a href="#测试测试" class="headerlink" title="测试测试"></a>测试测试</h1><h2 id="时光不停"><a href="#时光不停" class="headerlink" title="时光不停"></a>时光不停</h2><h3 id="时光不停-1"><a href="#时光不停-1" class="headerlink" title="时光不停"></a>时光不停</h3><blockquote>
+<p>不停</p>
+</blockquote>
+<p><a href="https://weibo.com/p/1005055918998349/home" target="_blank" rel="external">新浪微博</a></p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1507782690489&amp;di=c9464115f6db2f61c0b8d9bb532edf4b&amp;imgtype=0&amp;src=http%3A%2F%2Fe.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F622762d0f703918f5cb03abf513d269759eec466.jpg" alt="pic0"></p>
+<a id="more"></a>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=509902724&auto=1&height=66"><br></iframe>
+
+
+
+<embed height="500" width="700" quality="high" allowfullscreen="true" type="application/x-shockwave-flash" src="//static.hdslb.com/miniloader.swf" flashvars="aid=14909587&page=1" pluginspage="//www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"><br>
+]]></content>
+      
+        <categories>
+            
+            <category> 测试 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[欢迎来到不停的博客，我还有一个名字叫Tesla Chan]]></title>
+      <url>/2017/10/11/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://butingshiguang.github.io/">KM</a>!<br>这是我的第二个博客，使用GithubPages搭建，我是 TeslaChan @buting，一个热爱技术，爱好科学的骚年~~~</p>
+<h2 id="以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt"><a href="#以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视-gt-lt" class="headerlink" title="以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;"></a>以下都是扯淡！！！博客先搭起来再说，以后再慢慢美化整理，乱七八糟的东西请无视&gt;_&lt;</h2><h3 id="我的新浪微博-曦未晞-，欢迎关注-，这才是重点"><a href="#我的新浪微博-曦未晞-，欢迎关注-，这才是重点" class="headerlink" title="我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点"></a>我的新浪微博 @曦未晞 ，欢迎关注~，这才是重点</h3><a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 欢迎 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 欢迎 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
 </search>
