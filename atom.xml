@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://butingshiguang.github.io/"/>
-  <updated>2018-01-09T13:19:54.579Z</updated>
+  <updated>2018-04-26T12:27:18.242Z</updated>
   <id>https://butingshiguang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>说一下迁移系统到SSD后的双系统问题</title>
+    <link href="https://butingshiguang.github.io/2018/04/26/20180426/"/>
+    <id>https://butingshiguang.github.io/2018/04/26/20180426/</id>
+    <published>2018-04-26T11:51:53.000Z</published>
+    <updated>2018-04-26T12:27:18.242Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="系统迁移与双系统"><a href="#系统迁移与双系统" class="headerlink" title="系统迁移与双系统"></a>系统迁移与双系统</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><ul><li>上周受不了电脑的慢，给电脑加装了一块240GB SSD，为了跑Java和安卓模拟器加了一根4G内存条</li><li>为了提高工作效率</li></ul><a id="more"></a><h2 id="系统迁移"><a href="#系统迁移" class="headerlink" title="系统迁移"></a>系统迁移</h2><ul><li>因为系统装了很多编程软件和各种环境，重装太麻烦故选择迁移</li><li>工具是WePE里的傲梅分区助手，SSD分了两个区，完整迁移C盘至SSD，并且将D盘(我用做软件安装盘)里的ProgramFiles *拷贝到SSD第二个分区</li><li>修复引导从SSD进入系统后更改软件盘的盘符与之前对应即可</li></ul><h2 id="Ubuntu系统拯救"><a href="#Ubuntu系统拯救" class="headerlink" title="Ubuntu系统拯救"></a>Ubuntu系统拯救</h2><ol><li>因为原来是机械硬盘上有双系统，而我合并了以前的系统盘和软件盘两个分区，导致硬盘分区编号变动致Ubuntu不能引导启动</li><li>我在Win10下使用Easy BCD免费软件添加了Grub2引导hd0(原机械)的Linux /boot分区，重启进入Grub命令行界面</li><li>使用<code>ls</code>命令查看硬盘分区状况,<code>ls (hd0, msdos*)</code>等查看分区类型，找到Ext2的两个分区，一个是boot分区，一个是/分区</li><li>使用<code>set</code>查看grub配置情况，查看<code>prefix=xxx</code>，<code>root=xxx</code>，发现不对</li><li>使用<code>ls</code>继续查看文件，区分/boot分区与/分区</li><li>找到boot分区后使用<code>set prefix=hd0,msdos6/grub</code>,<code>set root=hd0,msdos6</code>设置好grub配置</li><li>使用<code>insmod normal</code>,<code>normal</code>就可以启动Ubuntu了</li><li>进入系统后使用<code>update-grub</code>(需要root权限),系统便会自动更新引导相关配置</li><li>大功告成</li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul><li>推荐一个小工具EasyBCD,我已经用了三四年了，双系统安装(Win为主，Linux为辅)很棒</li><li>没事多鼓捣，实践出真知</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;系统迁移与双系统&quot;&gt;&lt;a href=&quot;#系统迁移与双系统&quot; class=&quot;headerlink&quot; title=&quot;系统迁移与双系统&quot;&gt;&lt;/a&gt;系统迁移与双系统&lt;/h1&gt;&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;上周受不了电脑的慢，给电脑加装了一块240GB SSD，为了跑Java和安卓模拟器加了一根4G内存条&lt;/li&gt;
+&lt;li&gt;为了提高工作效率&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="技能" scheme="https://butingshiguang.github.io/categories/%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="技能" scheme="https://butingshiguang.github.io/tags/%E6%8A%80%E8%83%BD/"/>
+    
+  </entry>
   
   <entry>
     <title>不坚持是不会学到东西的</title>

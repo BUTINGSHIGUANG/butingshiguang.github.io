@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[说一下迁移系统到SSD后的双系统问题]]></title>
+    <url>%2F2018%2F04%2F26%2F20180426%2F</url>
+    <content type="text"><![CDATA[系统迁移与双系统起因 上周受不了电脑的慢，给电脑加装了一块240GB SSD，为了跑Java和安卓模拟器加了一根4G内存条 为了提高工作效率 系统迁移 因为系统装了很多编程软件和各种环境，重装太麻烦故选择迁移 工具是WePE里的傲梅分区助手，SSD分了两个区，完整迁移C盘至SSD，并且将D盘(我用做软件安装盘)里的ProgramFiles *拷贝到SSD第二个分区 修复引导从SSD进入系统后更改软件盘的盘符与之前对应即可 Ubuntu系统拯救 因为原来是机械硬盘上有双系统，而我合并了以前的系统盘和软件盘两个分区，导致硬盘分区编号变动致Ubuntu不能引导启动 我在Win10下使用Easy BCD免费软件添加了Grub2引导hd0(原机械)的Linux /boot分区，重启进入Grub命令行界面 使用ls命令查看硬盘分区状况,ls (hd0, msdos*)等查看分区类型，找到Ext2的两个分区，一个是boot分区，一个是/分区 使用set查看grub配置情况，查看prefix=xxx，root=xxx，发现不对 使用ls继续查看文件，区分/boot分区与/分区 找到boot分区后使用set prefix=hd0,msdos6/grub,set root=hd0,msdos6设置好grub配置 使用insmod normal,normal就可以启动Ubuntu了 进入系统后使用update-grub(需要root权限),系统便会自动更新引导相关配置 大功告成 总结 推荐一个小工具EasyBCD,我已经用了三四年了，双系统安装(Win为主，Linux为辅)很棒 没事多鼓捣，实践出真知]]></content>
+      <categories>
+        <category>技能</category>
+      </categories>
+      <tags>
+        <tag>技能</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[不坚持是不会学到东西的]]></title>
     <url>%2F2018%2F01%2F08%2F20180108%2F</url>
     <content type="text"><![CDATA[不坚持是不会学到东西的，有的时候优秀的东西一定是在考验的环境里熬出来的 马云-演讲]]></content>
